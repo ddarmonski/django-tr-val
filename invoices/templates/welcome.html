@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Invoice Validator</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{% static 'images/PHXGROUP.svg' %}" alt="Logo">
+        </div>
+        <ul>
+            <li><a href="{% url 'welcome' %}">Home</a></li>
+            <li><a href="{% url 'upload' %}">Upload Invoice</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Welcome to Invoice Validator</h1>
+        <div class="card-container">
+            <a href="{% url 'upload' %}" class="card">
+                <h2>Upload Invoice</h2>
+                <p>Upload and validate your invoices easily.</p>
+            </a>
+            <a href="{% url 'dashboard' %}" class="card">
+                <h2>View Dashboard</h2>
+                <p>View your invoice validation dashboard.</p>
+            </a>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 <a href="https://data-analytics.phoenixgroup.eu/" target="_blank">Advanced Analytics and AI</a>. All rights reserved.</p>
+    </footer>
+</body>
+</html>

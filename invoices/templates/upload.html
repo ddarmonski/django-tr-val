@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Invoice</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/upload.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{% static 'images/PHXGROUP.svg' %}" alt="Logo">
+        </div>
+        <ul>
+            <li><a href="javascript:history.back()">Back</a></li>
+            <li><a href="{% url 'welcome' %}">Home</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="left-panel">
+            <div class="dropzone" id="dropzone">
+                <p>Drag & Drop your files here or click to upload</p>
+                <input type="file" id="fileInput" accept="application/pdf" style="display: none;">
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+        </div>
+        <div class="content">
+            <iframe id="pdfViewer" src="" type="application/pdf"></iframe>
+        </div>
+        <div class="table-container">
+            <table id="invoiceSummary">
+                <tr>
+                    <th>Field</th>
+                    <th>Value</th>
+                </tr>
+                <tr>
+                    <td>VAT</td>
+                    <td id="vat">Extracted VAT</td>
+                </tr>
+                <tr>
+                    <td>Total Amount</td>
+                    <td id="totalAmount">Extracted Total Amount</td>
+                </tr>
+                <tr>
+                    <td>Gas Indexation</td>
+                    <td id="gasIndexation">Extracted Gas Indexation</td>
+                </tr>
+            </table>
+            <h3>Line Items</h3>
+            <table id="lineItemsTable">
+                <tr>
+                    <th>Tour ID</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+                <!-- Line items will be populated here -->
+            </table>
+            <div class="buttons">
+                <button class="validate-btn" onclick="validateInvoice()">Validate</button>
+                <button class="cancel-btn" onclick="cancelUpload()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 <a href="https://data-analytics.phoenixgroup.eu/" target="_blank">Advanced Analytics and AI</a>. All rights reserved.</p>
+    </footer>
+    <script src="{% static 'js/upload.js' %}"></script>
+</body>
+</html>

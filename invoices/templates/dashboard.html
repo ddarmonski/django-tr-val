@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{% static 'images/PHXGROUP.svg' %}" alt="Logo">
+        </div>
+        <ul>
+            <li><a href="{% url 'welcome' %}">Home</a></li>
+            <li><a href="{% url 'upload' %}">Upload Invoice</a></li>
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Dashboard</h1>
+        <iframe src="https://app.powerbi.com/groups/38b026e7-8992-4c0c-9856-bc8fed44e7d3/reports/b9f74695-d32b-4ccb-a7a5-33934c28c103/fbd2124058d543fcb3c1?experience=power-bi" frameborder="0" allowFullScreen="true"></iframe>
+    </div>
+    <footer class="footer">
+        <p>&copy; 2024 <a href="https://data-analytics.phoenixgroup.eu/" target="_blank">Advanced Analytics and AI</a>. All rights reserved.</p>
+    </footer>
+</body>
+</html>
