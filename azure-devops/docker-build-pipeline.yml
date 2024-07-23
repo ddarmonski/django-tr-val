@@ -5,7 +5,7 @@ trigger:
       - main
 variables:
   dockerRegistryServiceConnection: 'csdaaaai-cr'
-  imageRepository: 'phx-gpt-containerized'
+  imageRepository: 'transport-ai-containerized'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: 'latest'
 
