@@ -1,0 +1,29 @@
+name: 'build docker image PHX GPT'
+trigger: 
+  branches: 
+    include: 
+      - main
+variables:
+  dockerRegistryServiceConnection: 'csdaaaai-cr'
+  imageRepository: 'phx-gpt-containerized'
+  dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+  tag: 'latest'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+stages:
+  - stage: build
+    jobs:
+      - job: 'build_image'
+        steps:
+        - checkout: self
+        - task: Docker@2
+          displayName: Build and push an image to container registry      
+          inputs:        
+            command: buildAndPush        
+            repository: $(imageRepository)        
+            dockerfile: $(dockerfilePath)        
+            containerRegistry: $(dockerRegistryServiceConnection)        
+            tags: |      
+              $(tag)
