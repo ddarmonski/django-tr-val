@@ -14,7 +14,8 @@ SECRET_KEY = 'django-insecure-lzlo*&%5v++%-ba8l^jylvqwzcsas!f%b#27&x(uz0ro^#yd2_
 DEBUG = True
 
 # Allowed hosts
-ALLOWED_HOSTS = ['transport-ai.azurewebsites.net', '127.0.0.1']
+#ALLOWED_HOSTS = ['transport-ai.azurewebsites.net', '127.0.0.1']
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
 
 # Application definition
 INSTALLED_APPS = [
