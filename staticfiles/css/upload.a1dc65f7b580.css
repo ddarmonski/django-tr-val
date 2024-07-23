@@ -207,7 +207,7 @@ th {
 
 .progress-bar {
     height: 100%;
-    background-color: #4caf50;
+    background: linear-gradient(to right, #4caf50, #4caf50);
     width: 0;
     white-space: nowrap;
     transition: width 0.4s ease-in-out;
@@ -216,14 +216,12 @@ th {
     justify-content: center;
     color: white;
     font-weight: bold;
-    position: relative;
 }
 
 #progressText {
     position: absolute;
     width: 100%;
     text-align: center;
-    color: black; /* Ensure text color is black for better visibility */
+    color: black; /* Change text color to black for better visibility */
     font-weight: bold;
-    z-index: 1; /* Ensure text is above the progress bar */
 }

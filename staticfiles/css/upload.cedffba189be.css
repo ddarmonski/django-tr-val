@@ -216,14 +216,12 @@ th {
     justify-content: center;
     color: white;
     font-weight: bold;
-    position: relative;
 }
 
 #progressText {
     position: absolute;
     width: 100%;
     text-align: center;
-    color: black; /* Ensure text color is black for better visibility */
+    color: white;
     font-weight: bold;
-    z-index: 1; /* Ensure text is above the progress bar */
 }

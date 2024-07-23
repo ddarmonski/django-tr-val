@@ -61,8 +61,14 @@
                 <!-- Line items will be populated here -->
             </table>
             <div class="buttons">
-                <button class="validate-btn" onclick="validateInvoice()">Validate</button>
+                <button class="validate-btn" >Validate</button>
+                
                 <button class="cancel-btn" onclick="cancelUpload()">Cancel</button>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar">
+                    <span id="progressText"></span>
+                </div>
             </div>
         </div>
     </div>
@@ -70,5 +76,9 @@
         <p>&copy; 2024 <a href="https://data-analytics.phoenixgroup.eu/" target="_blank">Advanced Analytics and AI</a>. All rights reserved.</p>
     </footer>
     <script src="{% static 'js/upload.js' %}"></script>
+    <script>
+        // Include the CSRF token in the JavaScript context
+        const csrfToken = '{{ csrf_token }}';
+    </script>
 </body>
 </html>

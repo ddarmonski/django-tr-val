@@ -194,3 +194,36 @@ th {
 .footer a:hover {
     text-decoration: underline;
 }
+
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px;
+    position: relative;
+}
+
+.progress-bar {
+    height: 100%;
+    background-color: #4caf50;
+    width: 0;
+    white-space: nowrap;
+    transition: width 0.4s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    position: relative;
+}
+
+#progressText {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    color: black; /* Ensure text color is black for better visibility */
+    font-weight: bold;
+    z-index: 1; /* Ensure text is above the progress bar */
+}

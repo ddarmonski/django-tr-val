@@ -41,11 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function extractInvoiceData(file) {
-        const progressBar = document.getElementById('progressBar');
-        const progressText = document.getElementById('progressText');
-        progressBar.style.width = '33%';  // Reset progress bar
-        progressText.textContent = 'Starting data extraction...';
-    
+        console.log('Starting data extraction...');  // Add this line
         const formData = new FormData();
         formData.append('invoices', file);
     
@@ -60,13 +56,11 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            progressBar.style.width = '66%';  // Update progress bar
-            progressText.textContent = 'Received server response...';
+            console.log('Received server response...');  // Add this line
             return response.json();
         })
         .then(data => {
-            progressBar.style.width = '100%';  // Update progress bar
-            progressText.textContent = 'Processing server data...';
+            console.log('Processing server data...');  // Add this line
             console.log('Response data:', data);
             if (data.errors) {
                 alert(data.errors.join('\n'));
@@ -74,8 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log('Extracted data:', data.extracted_data);
                 updateUI(data.extracted_data);
             }
-            progressBar.style.width = '100%';  // Update progress bar
-            progressText.textContent = 'Done!';
         })
         .catch(error => {
             console.error('Fetch error:', error);
