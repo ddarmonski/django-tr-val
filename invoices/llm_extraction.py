@@ -83,9 +83,9 @@ dict_cols = {
 
 
 
-def pdf_to_base64_images(pdf_path):
-    # Open the PDF file
-    pdf_document = fitz.open(pdf_path)
+def pdf_to_base64_images(pdf_bytes):
+    # Open the PDF file from bytes
+    pdf_document = fitz.open(stream=pdf_bytes, filetype="pdf")
     
     # Initialize a list to hold base64 encoded images
     base64_images = []
@@ -127,12 +127,16 @@ def call_openai_api(base64_image):
                 "role": "system",
                 "content": [
                     {"type": "text", "text": "You are AI assistant that have excellent undrestanding on invoices. Your task is to extract table from an image of invoice and match it with a schema. You should return JSON only"}, 
+                    #{"type": "text", "text": "You are AI assistant that helps people find answers."}, 
+
                 ]
             },
             {
                 "role": "user",
                 "content": [
-                    {"type": "text", "text": f"Extract the table from this invoice and match it with the following schema: {dict_cols}." },
+                   {"type": "text", "text": f"Extract the table from this invoice and match it with the following schema: {dict_cols}." },
+                    #{"type": "text", "text": f"tell me what is on the image." },
+
                     {
                         "type": "image_url",
                         "image_url": {
@@ -147,7 +151,7 @@ def call_openai_api(base64_image):
     )
 
     responce_str = response.choices[0].message.content
-    #print(responce_str)
+    print(responce_str)
     # Extract JSON response containing the table data
     json_output = extract_json_from_string(responce_str)
 
@@ -155,6 +159,7 @@ def call_openai_api(base64_image):
     df = pd.DataFrame(json_output)
 
     return df
+
 
 def extract_json_from_string(input_string):
     # Use regex to find the JSON object in the string
