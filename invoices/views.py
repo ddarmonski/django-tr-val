@@ -5,6 +5,8 @@ from azure.storage.blob import BlobServiceClient
 from .llm_extraction import pdf_to_base64_images, call_openai_api
 import uuid
 import logging
+import os
+AZURE_STORAGE_CONNECTION_STRING = os.getenv('AZURE_STORAGE_CONNECTION_STRING')
 
 logger = logging.getLogger(__name__)
 
@@ -18,7 +20,7 @@ def upload(request):
         extracted_data = []
 
         # Initialize Azure Blob Service Client
-        blob_service_client = BlobServiceClient.from_connection_string(settings.AZURE_STORAGE_CONNECTION_STRING)
+        blob_service_client = BlobServiceClient.from_connection_string(AZURE_STORAGE_CONNECTION_STRING)
         container_name = 'invoices'
         container_client = blob_service_client.get_container_client(container_name)
 
